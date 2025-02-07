@@ -66,8 +66,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 validator: (value) {
                   if (value == null ||
-                      !value.contains('@') ||
-                      !value.contains('.')) {
+                      !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+                          .hasMatch(value)) {
                     return 'invalid_email'.tr;
                   }
                   return null;
